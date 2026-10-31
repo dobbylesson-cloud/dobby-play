@@ -6,6 +6,10 @@
 <title>Dobby Play — 探索大家的創作</title>
 <link rel="icon" type="image/png" href="index.icon.png">
 <link rel="stylesheet" href="site.css">
+<script>
+  // 舊分享連結（/#g=…）直接轉到遊戲頁，避免落在探索首頁。
+  if (location.hash.indexOf('#g=') === 0) location.replace('play.html' + location.hash);
+</script>
 </head>
 <body>
 <header class="topbar">
