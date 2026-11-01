@@ -157,6 +157,7 @@ html, body {
   box-shadow: 0 2px 4px rgba(16, 18, 24, .08), 0 12px 26px rgba(16, 18, 24, .1);
 }
 
+/* 素材縮圖：正方形 */
 .thumb {
   aspect-ratio: 1 / 1;
   background: var(--thumb-bg);
