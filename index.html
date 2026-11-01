@@ -27,7 +27,6 @@
     </nav>
     <div class="topbar-right">
       <a class="hint-chip admin-link" id="adminLink" href="admin.html" hidden>管理</a>
-      <span class="hint-chip" id="creatorChip">創作者：不詳</span>
     </div>
   </div>
 </header>
@@ -38,42 +37,8 @@
     <p id="sectionSub">所有人上傳的遊戲，點卡片就能玩。</p>
   </div>
   <div class="grid" id="grid"></div>
-  <div class="empty" id="emptyState" hidden>這裡還沒有作品，點上面的「製作」卡片開始創作。</div>
+  <div class="empty" id="emptyState" hidden>這裡還沒有作品。</div>
 </main>
-
-<div class="editor-mask" id="editorMask" hidden>
-  <div class="editor">
-    <div class="editor-head">
-      <h2 id="editorTitle">製作動畫</h2>
-      <div class="editor-actions">
-        <button class="btn ghost" id="editorCancel">取消</button>
-        <button class="btn primary" id="editorSave">存檔</button>
-      </div>
-    </div>
-    <div class="editor-body">
-      <div class="canvas-wrap">
-        <canvas id="pixelCanvas" width="520" height="520"></canvas>
-      </div>
-      <aside class="editor-side">
-        <label class="field">
-          <span>作品名稱</span>
-          <input id="itemTitle" maxlength="24" placeholder="例：火焰小怪">
-        </label>
-        <label class="field">
-          <span>創作者姓名</span>
-          <input id="itemCreator" maxlength="20" placeholder="例：多比老師">
-        </label>
-        <div class="palette" id="palette"></div>
-        <div class="tools">
-          <button class="tool" id="toolBrush" data-tool="brush">畫筆</button>
-          <button class="tool" id="toolEraser" data-tool="eraser">橡皮擦</button>
-          <button class="tool" id="toolClear">全部清除</button>
-        </div>
-        <p class="editor-note">13×13 像素畫。存檔後會出現在「本機」列表；在 App 內製作的作品可上傳到所有人的列表。</p>
-      </aside>
-    </div>
-  </div>
-</div>
 
 <div class="toast" id="toast" hidden></div>
 <script src="site.js"></script>
