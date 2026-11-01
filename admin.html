@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>管理後台 — Dobby Play</title>
+<link rel="icon" type="image/png" href="index.icon.png">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="./">
+      <span class="brand-mark">D</span>
+      <span class="brand-name">Dobby Play</span>
+    </a>
+    <nav class="tabs" id="adminTabs" hidden>
+      <button class="tab is-active" data-type="game">遊戲</button>
+      <button class="tab" data-type="animation">動畫</button>
+      <button class="tab" data-type="background">遠景</button>
+      <button class="tab" data-type="character">角色</button>
+      <button class="tab" data-type="board">畫板</button>
+    </nav>
+    <div class="topbar-right">
+      <span class="hint-chip" id="accountChip" hidden></span>
+      <button class="btn ghost btn-sm" id="logoutBtn" type="button" hidden>登出</button>
+    </div>
+  </div>
+</header>
+
+<main class="page admin-page">
+  <section class="login-card" id="loginSection">
+    <h1>管理員登入</h1>
+    <p class="login-sub">管理社群已上架的遊戲、動畫、遠景、角色與畫板。只有白名單帳號可以修改。</p>
+    <ol class="login-steps">
+      <li>到 GitHub 建立 <strong>Fine-grained token</strong>，只授權此 repository 的 <strong>Contents: Read and write</strong>。</li>
+      <li>把 token 貼到下面，按「驗證並登入」。系統會確認帳號是否為管理員。</li>
+      <li>Token 只存在這台瀏覽器，不會寫進網站或 repo；換電腦要重新貼一次。</li>
+    </ol>
+    <div class="token-row">
+      <input id="tokenInput" type="password" autocomplete="off" spellcheck="false" placeholder="貼上 GitHub token">
+      <button class="btn primary" id="loginBtn" type="button">驗證並登入</button>
+    </div>
+    <p class="msg" id="loginMsg" role="status"></p>
+    <p class="editor-note">
+      建立 token：<a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → Settings → Developer settings → Fine-grained tokens</a>
+      （Repository access 選 <code>dobbylesson-cloud/dobby-play</code>，Permissions 的 Contents 設為 Read and write）
+    </p>
+  </section>
+
+  <section id="adminSection" hidden>
+    <div class="admin-head">
+      <div>
+        <h1 id="adminTitle">管理遊戲</h1>
+        <p id="adminSub">先上架、後審核：可隨時下架或刪除不適合的內容。</p>
+      </div>
+      <div class="admin-head-actions">
+        <span class="hint-chip" id="adminCount"></span>
+        <button class="btn ghost btn-sm" id="refreshBtn" type="button">重新載入</button>
+      </div>
+    </div>
+    <div class="admin-list" id="adminList"></div>
+    <div class="empty" id="adminEmpty" hidden>這個分類目前沒有社群作品。</div>
+    <p class="editor-note admin-note">排序會直接改變網站上的顯示順序；「置頂」會排到該分類最前面；「下架」只是從網站列表隱藏，檔案仍保留；「刪除」會一併移除 repo 內的檔案與縮圖。</p>
+  </section>
+</main>
+
+<div class="editor-mask" id="editMask" hidden>
+  <div class="editor edit-dialog">
+    <div class="editor-head">
+      <h2>編輯作品資訊</h2>
+      <div class="editor-actions">
+        <button class="btn ghost" id="editCancel" type="button">取消</button>
+        <button class="btn primary" id="editSave" type="button">儲存</button>
+      </div>
+    </div>
+    <div class="edit-fields">
+      <label class="field">
+        <span>作品名稱</span>
+        <input id="editTitle" maxlength="40" placeholder="作品名稱">
+      </label>
+      <label class="field">
+        <span>創作者</span>
+        <input id="editCreator" maxlength="20" placeholder="創作者">
+      </label>
+      <p class="msg" id="editMsg" role="status"></p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+<script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+/* --- 管理後台 --- */
+[hidden] { display: none !important; }
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-link {
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.admin-page {
+  max-width: 1100px;
+}
+
+.login-card {
+  max-width: 680px;
+  margin: 28px auto 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 30px 32px 26px;
+}
+
+.login-card h1 {
+  margin: 0 0 8px;
+  font-size: 26px;
+}
+
+.login-sub {
+  margin: 0 0 18px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.login-steps {
+  margin: 0 0 20px;
+  padding-left: 20px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.login-steps strong { color: var(--ink); }
+
+.token-row {
+  display: flex;
+  gap: 10px;
+}
+
+.token-row input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 44px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fafbfc;
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.token-row input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff;
+}
+
+.msg {
+  min-height: 20px;
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.msg.error { color: #c62828; }
+.msg.ok { color: #15803d; }
+
+.admin-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 6px 0 18px;
+}
+
+.admin-head h1 {
+  margin: 0 0 6px;
+  font-size: 25px;
+}
+
+.admin-head p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.admin-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.admin-row.is-hidden { opacity: .55; }
+
+.row-thumb {
+  flex: 0 0 auto;
+  width: 104px;
+  aspect-ratio: 16 / 10;
+  border-radius: 9px;
+  background: var(--thumb-bg);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.row-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.row-thumb.is-empty { background: #eef0f4; }
+
+.row-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.row-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 5px;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.row-title span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tag {
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #eef0f4;
+  color: var(--ink-soft);
+}
+
+.tag.pin { background: #fff3d6; color: #8a5b00; }
+.tag.off { background: #fdeaea; color: #b32626; }
+
+.row-meta {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.row-actions {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  max-width: 360px;
+}
+
+.mini {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 8px;
+  padding: 6px 9px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mini:hover { background: #f2f3f6; }
+
+.mini.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.mini.primary:hover { background: #1f6ee6; }
+
+.mini.danger {
+  color: #b32626;
+  border-color: #f0caca;
+}
+
+.mini.danger:hover { background: #fdeaea; }
+
+.mini[disabled] {
+  opacity: .45;
+  cursor: wait;
+}
+
+.admin-note { margin-top: 18px; }
+
+.edit-dialog {
+  width: min(460px, 100%);
+  display: block;
+  padding: 22px 24px;
+}
+
+.edit-dialog .editor-head { margin-bottom: 18px; }
+
+.edit-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.btn-sm {
+  padding: 7px 12px;
+  font-size: 13px;
+  border-radius: 9px;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  z-index: 40;
+  transform: translateX(-50%);
+  max-width: min(560px, calc(100vw - 32px));
+  padding: 11px 18px;
+  border-radius: 10px;
+  background: #1b1c21;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 8px 24px rgba(16, 18, 24, .22);
+}
+
+.toast[hidden] { display: none; }
+
+.toast.error { background: #b32626; }
+
+@media (max-width: 760px) {
+  .login-card { margin-top: 16px; padding: 22px 18px; }
+  .token-row { flex-direction: column; }
+  .token-row .btn { height: 44px; }
+  .admin-head { align-items: flex-start; flex-direction: column; }
+  .admin-row { align-items: flex-start; flex-wrap: wrap; }
+  .row-thumb { width: 84px; }
+  .row-actions { max-width: none; width: 100%; justify-content: flex-start; }
+}

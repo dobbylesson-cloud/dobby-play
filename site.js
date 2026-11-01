@@ -34,6 +34,10 @@ function init() {
   const creator = localStorage.getItem(CREATOR_KEY) || '';
   $('creatorChip').textContent = '創作者：' + (creator || '不詳');
 
+  try {
+    if (localStorage.getItem('dobby_admin_token')) $('adminLink').hidden = false;
+  } catch (_) { /* ignore */ }
+
   document.querySelectorAll('.tab').forEach((tab) => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.tab').forEach((t) => t.classList.remove('is-active'));
@@ -79,7 +83,9 @@ function render() {
   grid.appendChild(makeCard());
 
   const locals = localItems.filter((it) => it.type === currentType);
-  const remote = community.filter((it) => it.type === currentType);
+  const remote = community
+    .filter((it) => it.type === currentType && !it.hidden)
+    .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
 
   locals.forEach((it) => grid.appendChild(card(it, true)));
   remote.forEach((it) => grid.appendChild(card(it, false)));

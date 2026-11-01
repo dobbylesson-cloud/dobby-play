@@ -94,7 +94,18 @@ html, body {
 
 .tab.is-active { background: #1b1c21; color: #fff; }
 
-.topbar-right { flex: 0 0 auto; }
+.topbar-right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-link {
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 700;
+}
 
 .hint-chip {
   font-size: 12px;
