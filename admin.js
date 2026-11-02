@@ -14,6 +14,7 @@
 
   const TYPES = {
     game: { label: "遊戲", title: "管理遊戲" },
+    remix: { label: "遊戲", title: "管理遊戲" },
     animation: { label: "動畫", title: "管理動畫" },
     background: { label: "遠景", title: "管理遠景" },
     character: { label: "角色", title: "管理角色" },
@@ -288,7 +289,9 @@
     const list = ui.adminList();
     list.textContent = "";
 
-    const entries = state.items.filter((it) => typeOf(it) === type);
+    const entries = state.items.filter(
+      (it) => typeOf(it) === type || (type === "game" && typeOf(it) === "remix")
+    );
     ui.adminTitle().textContent = TYPES[type].title;
     ui.adminSub().textContent = type === "game"
       ? "先上架、後審核：可下架或刪除不適合的遊戲。"
