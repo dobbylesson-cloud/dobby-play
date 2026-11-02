@@ -21,10 +21,6 @@
     <nav class="tabs" id="tabs">
       <button class="tab is-active" data-type="game">Play</button>
       <button class="tab" data-type="rooms">遊戲</button>
-      <button class="tab" data-type="animation">動畫</button>
-      <button class="tab" data-type="background">遠景</button>
-      <button class="tab" data-type="character">角色</button>
-      <button class="tab" data-type="board">畫板</button>
     </nav>
     <div class="topbar-right">
       <a class="hint-chip admin-link" id="adminLink" href="admin.html" hidden>管理</a>
@@ -37,34 +33,6 @@
     <h1 id="sectionTitle">發現遊戲</h1>
     <p id="sectionSub">所有人上傳的遊戲，點卡片就能玩。</p>
   </div>
-  <section class="uploader" id="uploader" hidden>
-    <h2>上傳素材</h2>
-    <p class="uploader-note">使用管理員 GitHub token 上傳房間或貼圖（PNG），上傳後所有人可在「遊戲」頁籤下載。</p>
-    <div class="uploader-row">
-      <label class="field"><span>管理員 token</span>
-        <input id="upToken" type="password" autocomplete="off" spellcheck="false" placeholder="貼上 GitHub token">
-      </label>
-      <label class="field"><span>素材類型</span>
-        <select id="upType">
-          <option value="room">房間</option>
-          <option value="texture">貼圖</option>
-        </select>
-      </label>
-    </div>
-    <div class="uploader-row">
-      <label class="field"><span>名稱</span>
-        <input id="upTitle" maxlength="40" placeholder="素材名稱">
-      </label>
-      <label class="field"><span>創作者</span>
-        <input id="upCreator" maxlength="20" placeholder="你的名字">
-      </label>
-      <label class="field"><span>檔案（PNG）</span>
-        <input id="upFile" type="file" accept="image/png">
-      </label>
-      <button class="btn primary" id="upBtn" type="button">上傳</button>
-    </div>
-    <p class="msg" id="upMsg" role="status"></p>
-  </section>
   <div class="grid" id="grid"></div>
   <div class="empty" id="emptyState" hidden>這裡還沒有作品。</div>
 </main>
