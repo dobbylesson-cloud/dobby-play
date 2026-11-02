@@ -3,6 +3,10 @@
 const TYPES = {
   game: { label: 'Play', title: 'Play遊戲', sub: '所有人上傳的遊戲，點卡片就能玩。' },
   rooms: { label: '遊戲', title: '發現遊戲', sub: '所有人上傳的遊戲，點卡片下載完整遊戲。' },
+  animation: { label: '動畫', title: '發現動畫', sub: '所有人上傳的動畫。' },
+  background: { label: '遠景', title: '發現遠景', sub: '所有人上傳的遠景背景。' },
+  character: { label: '角色', title: '發現角色', sub: '所有人上傳的角色。' },
+  board: { label: '畫板', title: '發現畫板', sub: '所有人上傳的畫板。' },
 };
 
 const ROOMS_TYPES = ['remix'];
