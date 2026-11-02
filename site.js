@@ -2,14 +2,14 @@
 
 const TYPES = {
   game: { label: 'Play', title: '發現遊戲', sub: '所有人上傳的遊戲，點卡片就能玩。' },
-  rooms: { label: '遊戲', title: '遊戲素材', sub: '下載房間與貼圖素材；管理員可在上方直接上傳。' },
+  rooms: { label: '遊戲', title: '遊戲素材', sub: '下載房間與貼圖素材（畫板、遠景也能下載）；管理員可在上方上傳房間／貼圖。' },
   animation: { label: '動畫', title: '發現動畫', sub: '所有人上傳的動畫。' },
   background: { label: '遠景', title: '發現遠景', sub: '所有人上傳的遠景背景。' },
   character: { label: '角色', title: '發現角色', sub: '所有人上傳的角色。' },
   board: { label: '畫板', title: '發現畫板', sub: '所有人上傳的畫板。' },
 };
 
-const ROOMS_TYPES = ['room', 'texture', 'board'];
+const ROOMS_TYPES = ['room', 'texture', 'board', 'background'];
 const GH_OWNER = 'dobbylesson-cloud';
 const GH_REPO = 'dobby-play';
 const GH_BRANCH = 'main';
@@ -81,7 +81,8 @@ function render() {
 function card(item) {
   const el = document.createElement('article');
   el.className = 'card';
-  const typeText = item.type === 'room' ? '房間' : (item.type === 'texture' ? '貼圖' : '');
+  const typeText = (item.type === 'room' || item.type === 'board') ? '房間'
+    : ((item.type === 'texture' || item.type === 'background') ? '貼圖' : '');
   const metaText = item.rating ? '👍 ' + item.rating + '% 評分' : (item.meta || '');
   const showType = currentType === 'rooms' && typeText;
   const metaFull = item.rating ? metaText : [typeText, metaText].filter(Boolean).join('・');
@@ -118,7 +119,7 @@ function onCardClick(item) {
       toast('這個素材沒有檔案。');
       return;
     }
-    downloadFile(item.file, (item.title || '素材') + (item.file.endsWith('.png') ? '.png' : ''));
+    downloadFile(item.file, (item.title || '素材') + (item.file.match(/\.[a-z0-9]+$/i)?.[0] || ''));
     return;
   }
   if (currentType !== 'game') {
