@@ -157,9 +157,8 @@ html, body {
   box-shadow: 0 2px 4px rgba(16, 18, 24, .08), 0 12px 26px rgba(16, 18, 24, .1);
 }
 
-/* 素材縮圖：正方形 */
 .thumb {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 10;
   background: var(--thumb-bg);
   display: grid;
   place-items: center;
@@ -262,6 +261,47 @@ html, body {
   color: var(--ink-soft);
   padding: 72px 0;
   font-size: 15px;
+}
+
+/* --- 上傳表單（遊戲素材頁籤） --- */
+.uploader {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 20px 20px;
+  margin: 0 0 26px;
+}
+
+.uploader h2 { margin: 0 0 4px; font-size: 18px; }
+.uploader-note { margin: 0 0 16px; color: var(--ink-soft); font-size: 13px; }
+.uploader-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; margin-bottom: 12px; }
+.uploader-row .field { min-width: 180px; flex: 1 1 180px; }
+
+.uploader .field select {
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 10px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: #fff;
+}
+
+.uploader .field input[type="file"] {
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 7px 10px;
+  font-size: 13px;
+  background: #fff;
+}
+
+.msg { font-size: 13px; color: var(--ink-soft); margin: 4px 0 0; min-height: 18px; }
+
+@media (max-width: 760px) {
+  .uploader-row .field { flex-basis: 100%; }
 }
 
 /* --- 編輯器 --- */
