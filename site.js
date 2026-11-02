@@ -81,7 +81,7 @@ function render() {
 function card(item) {
   const el = document.createElement('article');
   el.className = 'card';
-  const typeText = item.type === 'remix' ? '房間＋貼圖'
+  const typeText = item.type === 'remix' ? '遊戲'
     : ((item.type === 'room' || item.type === 'board') ? '房間'
     : ((item.type === 'texture' || item.type === 'background') ? '貼圖' : ''));
   const metaText = item.rating ? '👍 ' + item.rating + '% 評分' : (item.meta || '');
