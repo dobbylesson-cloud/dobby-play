@@ -13,6 +13,7 @@
   const TOKEN_KEY = "dobby_admin_token";
 
   const TYPES = {
+    play: { label: "Play", title: "管理 Play 遊戲" },
     game: { label: "遊戲", title: "管理遊戲" },
     remix: { label: "遊戲", title: "管理遊戲" },
     animation: { label: "動畫", title: "管理動畫" },
@@ -34,7 +35,7 @@
     doc: null,
     items: [],
     sha: "",
-    type: "game",
+    type: "play",
     saving: false,
     editing: null,
   };
@@ -289,11 +290,10 @@
     const list = ui.adminList();
     list.textContent = "";
 
-    const entries = state.items.filter(
-      (it) => typeOf(it) === type || (type === "game" && typeOf(it) === "remix")
-    );
+    const filterTypes = type === "play" ? ["game"] : type === "game" ? ["remix"] : [type];
+    const entries = state.items.filter((it) => filterTypes.includes(typeOf(it)));
     ui.adminTitle().textContent = TYPES[type].title;
-    ui.adminSub().textContent = type === "game"
+    ui.adminSub().textContent = (type === "play" || type === "game")
       ? "先上架、後審核：可下架或刪除不適合的遊戲。"
       : `先上架、後審核：管理社群上架的${TYPES[type].label}。`;
 
