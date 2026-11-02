@@ -132,7 +132,7 @@
 .row-thumb {
   flex: 0 0 auto;
   width: 104px;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 1 / 1;
   border-radius: 9px;
   background: var(--thumb-bg);
   overflow: hidden;
