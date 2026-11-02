@@ -1,7 +1,7 @@
 /* Dobby Play 首頁：分頁探索列表。社群作品資料來自 library/index.json。 */
 
 const TYPES = {
-  game: { label: '遊戲', title: '發現遊戲', sub: '所有人上傳的遊戲，點卡片就能玩。' },
+  game: { label: 'Play', title: '發現遊戲', sub: '所有人上傳的遊戲，點卡片就能玩。' },
   animation: { label: '動畫', title: '發現動畫', sub: '所有人上傳的動畫。' },
   background: { label: '遠景', title: '發現遠景', sub: '所有人上傳的遠景背景。' },
   character: { label: '角色', title: '發現角色', sub: '所有人上傳的角色。' },
