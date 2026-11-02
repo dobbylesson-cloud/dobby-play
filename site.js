@@ -9,7 +9,7 @@ const TYPES = {
   board: { label: '畫板', title: '發現畫板', sub: '所有人上傳的畫板。' },
 };
 
-const ROOMS_TYPES = ['room', 'texture', 'board', 'background'];
+const ROOMS_TYPES = ['room', 'texture', 'board', 'background', 'remix'];
 const GH_OWNER = 'dobbylesson-cloud';
 const GH_REPO = 'dobby-play';
 const GH_BRANCH = 'main';
@@ -81,8 +81,9 @@ function render() {
 function card(item) {
   const el = document.createElement('article');
   el.className = 'card';
-  const typeText = (item.type === 'room' || item.type === 'board') ? '房間'
-    : ((item.type === 'texture' || item.type === 'background') ? '貼圖' : '');
+  const typeText = item.type === 'remix' ? '房間＋貼圖'
+    : ((item.type === 'room' || item.type === 'board') ? '房間'
+    : ((item.type === 'texture' || item.type === 'background') ? '貼圖' : ''));
   const metaText = item.rating ? '👍 ' + item.rating + '% 評分' : (item.meta || '');
   const showType = currentType === 'rooms' && typeText;
   const metaFull = item.rating ? metaText : [typeText, metaText].filter(Boolean).join('・');
