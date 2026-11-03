@@ -104,17 +104,39 @@ function onCardClick(item) {
     return;
   }
   toast('載入遊戲中…');
-  fetch(item.file)
+  fetch(item.file, { cache: 'no-store' })
     .then((res) => {
       if (!res.ok) throw new Error('讀取遊戲資料失敗');
-      return res.text();
+      return res.arrayBuffer();
     })
-    .then((payload) => {
-      const p = payload.trim();
-      if (!p) throw new Error('遊戲資料是空的');
-      location.href = 'play.html#g=' + p;
+    .then((buf) => {
+      const bytes = new Uint8Array(buf);
+      let payload = '';
+      if (bytes.length > 1 && bytes[0] === 0x1f && bytes[1] === 0x8b) {
+        // 檔案直接存 gzip 位元組（App 上傳經 GitHub 解碼後就是這種格式）
+        payload = bytesToBase64(bytes);
+      } else {
+        // 舊格式：檔案本身就是 base64 文字（可能是 base64url）
+        payload = new TextDecoder('utf-8')
+          .decode(bytes)
+          .replace(/\s+/g, '')
+          .replace(/-/g, '+')
+          .replace(/_/g, '/');
+        while (payload.length % 4 !== 0) payload += '=';
+      }
+      if (!payload) throw new Error('遊戲資料是空的');
+      location.href = 'play.html#g=' + payload;
     })
     .catch((err) => toast(err.message));
+}
+
+function bytesToBase64(bytes) {
+  let bin = '';
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk) {
+    bin += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+  }
+  return btoa(bin);
 }
 
 let toastTimer = null;
