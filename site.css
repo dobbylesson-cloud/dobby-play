@@ -53,12 +53,8 @@ html, body {
   width: 34px;
   height: 34px;
   border-radius: 10px;
-  background: #1b1c21;
-  color: #fff;
-  font-weight: 800;
-  font-size: 19px;
-  display: grid;
-  place-items: center;
+  object-fit: cover;
+  display: block;
 }
 
 .brand-name {
