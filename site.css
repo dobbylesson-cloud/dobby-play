@@ -12,6 +12,25 @@
 
 * { box-sizing: border-box; }
 
+/* --- 頁尾 --- */
+body:has(> .site-footer) {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+body:has(> .site-footer) > .page {
+  flex: 1 0 auto;
+}
+.site-footer {
+  margin-top: auto;
+  padding: 26px 24px 32px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 13px;
+  letter-spacing: .2px;
+}
+.site-footer p { margin: 0; }
+
 html, body {
   margin: 0;
   padding: 0;
