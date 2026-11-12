@@ -113,6 +113,24 @@ html, body {
   white-space: nowrap;
 }
 
+/* 語言切換按鈕 */
+.lang-toggle {
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .12s ease, color .12s ease, border-color .12s ease;
+}
+
+.lang-toggle:hover {
+  background: #e6e9ef;
+  color: var(--ink);
+  border-color: #d4d8e0;
+}
+
+.lang-toggle:active {
+  background: #dde1e8;
+}
+
 /* --- 內容 --- */
 .page {
   max-width: 1240px;
@@ -438,6 +456,7 @@ html, body {
   .topbar-inner { gap: 14px; padding: 0 14px; }
   .brand-name { display: none; }
   .hint-chip { display: none; }
+  .hint-chip.lang-toggle { display: inline-flex; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px 12px; }
   .editor-body { flex-direction: column; }
   #pixelCanvas { width: 100%; height: auto; aspect-ratio: 1 / 1; }
