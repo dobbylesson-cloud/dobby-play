@@ -1,12 +1,12 @@
 /* Pixel World 首頁：Play 與發現遊戲。社群作品資料來自 library/index.json。 */
 
 const TYPES = {
-  game: { label: 'Play', title: 'Play遊戲', sub: '所有人上傳的遊戲，點卡片就能玩。' },
-  rooms: { label: '遊戲', title: '發現遊戲', sub: '所有人上傳的遊戲。' },
-  animation: { label: '動畫', title: '發現動畫', sub: '所有人上傳的動畫。' },
-  background: { label: '遠景', title: '發現遠景', sub: '所有人上傳的遠景背景。' },
-  character: { label: '角色', title: '發現角色', sub: '所有人上傳的角色。' },
-  board: { label: '畫板', title: '發現畫板', sub: '所有人上傳的畫板。' },
+  game: { label: 'tab.play', titleKey: 'index.game.title', subKey: 'index.game.sub' },
+  rooms: { label: 'tab.game', titleKey: 'index.rooms.title', subKey: 'index.rooms.sub' },
+  animation: { label: 'tab.animation', titleKey: 'index.animation.title', subKey: 'index.animation.sub' },
+  background: { label: 'tab.background', titleKey: 'index.background.title', subKey: 'index.background.sub' },
+  character: { label: 'tab.character', titleKey: 'index.character.title', subKey: 'index.character.sub' },
+  board: { label: 'tab.board', titleKey: 'index.board.title', subKey: 'index.board.sub' },
 };
 
 const ROOMS_TYPES = ['remix'];
@@ -37,6 +37,9 @@ function init() {
     });
   });
 
+  // 語言切換時重繪標題、副標與卡片文字。
+  document.addEventListener('langchange', render);
+
   fetchLibrary().finally(() => render());
 }
 
@@ -53,8 +56,8 @@ async function fetchLibrary() {
 
 function render() {
   const meta = TYPES[currentType];
-  $('sectionTitle').textContent = meta.title;
-  $('sectionSub').textContent = meta.sub;
+  $('sectionTitle').textContent = I18N.t(meta.titleKey);
+  $('sectionSub').textContent = I18N.t(meta.subKey);
 
   grid.innerHTML = '';
 
@@ -70,10 +73,28 @@ function render() {
   emptyState.hidden = remote.length > 0;
 }
 
+// 作品資料的 meta 是中文自由文字（例如「3 間房間」「13×13 像素」「由 App 上傳」），
+// 英文模式下換成對應英文，認不得的字串原樣保留。
+function localizeMeta(text) {
+  if (!text) return '';
+  if (I18N.getLang() !== 'en') return text;
+  let m = text.match(/^(\d+)\s*間房間$/);
+  if (m) return m[1] + ' rooms';
+  m = text.match(/^(\d+)\s*個房間$/);
+  if (m) return m[1] + ' rooms';
+  m = text.match(/^(\d+)\s*[×x]\s*(\d+)\s*像素$/);
+  if (m) return m[1] + '×' + m[2] + ' px';
+  if (text === '由 App 上傳' || text === '由App上傳') return 'Uploaded via App';
+  if (text === '由網頁上傳') return 'Uploaded via Web';
+  return text;
+}
+
 function card(item) {
   const el = document.createElement('article');
   el.className = 'card';
-  const metaText = item.rating ? '👍 ' + item.rating + '% 評分' : (item.meta || '');
+  const metaText = item.rating
+    ? '👍 ' + item.rating + I18N.t('rating.suffix')
+    : localizeMeta(item.meta || '');
   el.innerHTML = `
     <div class="thumb"><img loading="lazy" alt=""></div>
     <div class="card-body">
@@ -82,8 +103,8 @@ function card(item) {
       <p class="card-meta"><span class="meta-text"></span></p>
     </div>`;
   el.querySelector('img').src = item.thumb || item.file || '';
-  el.querySelector('.card-title').textContent = item.title || '未命名';
-  el.querySelector('.card-creator').textContent = '創作者：' + (item.creator || '不詳');
+  el.querySelector('.card-title').textContent = item.title || I18N.t('untitled');
+  el.querySelector('.card-creator').textContent = I18N.t('creator.prefix') + (item.creator || I18N.t('unknown'));
   el.querySelector('.meta-text').textContent = metaText;
   if (!metaText) el.querySelector('.card-meta').hidden = true;
 
@@ -96,17 +117,17 @@ function onCardClick(item) {
     return;
   }
   if (currentType !== 'game') {
-    toast('這是其他人的作品，可在 App 內使用。');
+    toast(I18N.t('toast.othersWork'));
     return;
   }
   if (!item.file) {
-    toast('這個作品沒有遊戲資料。');
+    toast(I18N.t('toast.noGameData'));
     return;
   }
-  toast('載入遊戲中…');
+  toast(I18N.t('toast.loading'));
   fetch(item.file, { cache: 'no-store' })
     .then((res) => {
-      if (!res.ok) throw new Error('讀取遊戲資料失敗');
+      if (!res.ok) throw new Error(I18N.t('toast.readFail'));
       return res.arrayBuffer();
     })
     .then((buf) => {
@@ -124,7 +145,7 @@ function onCardClick(item) {
           .replace(/_/g, '/');
         while (payload.length % 4 !== 0) payload += '=';
       }
-      if (!payload) throw new Error('遊戲資料是空的');
+      if (!payload) throw new Error(I18N.t('toast.emptyData'));
       location.href = 'play.html#g=' + payload;
     })
     .catch((err) => toast(err.message));
