@@ -37,6 +37,7 @@
     "index.board.title":      { zh: "發現畫板", en: "Discover Canvas" },
     "index.board.sub":        { zh: "所有人上傳的畫板。", en: "Canvas works uploaded by everyone." },
     "index.empty":            { zh: "這裡還沒有作品。", en: "No works here yet." },
+    "footer.copy":            { zh: "© 2026 Dobby Play · 用像素與愛打造", en: "© 2026 Dobby Play · Made with pixels and love" },
     "toast.othersWork": { zh: "這是其他人的作品，可在 App 內使用。", en: "This is someone else's work. Use it in the app." },
     "toast.noGameData": { zh: "這個作品沒有遊戲資料。", en: "This work has no game data." },
     "toast.loading":    { zh: "載入遊戲中…", en: "Loading game…" },
