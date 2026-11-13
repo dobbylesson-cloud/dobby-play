@@ -170,7 +170,7 @@ html, body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(10, minmax(0, 1fr));
   gap: 18px 12px;
 }
 
@@ -476,7 +476,7 @@ html, body {
   .brand-name { display: none; }
   .hint-chip { display: none; }
   .hint-chip.lang-toggle { display: inline-flex; }
-  .grid { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 14px 10px; }
+  .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px 10px; }
   .editor-body { flex-direction: column; }
   #pixelCanvas { width: 100%; height: auto; aspect-ratio: 1 / 1; }
 }
