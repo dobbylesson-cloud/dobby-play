@@ -170,8 +170,8 @@ html, body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(196px, 1fr));
-  gap: 22px 20px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 18px 12px;
 }
 
 .card {
@@ -207,14 +207,14 @@ html, body {
 }
 
 .card-body {
-  padding: 10px 12px 12px;
+  padding: 8px 8px 10px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .card-title {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
   margin: 0;
   white-space: nowrap;
@@ -223,7 +223,7 @@ html, body {
 }
 
 .card-creator {
-  font-size: 12px;
+  font-size: 10px;
   color: var(--ink-soft);
   margin: 0;
   white-space: nowrap;
@@ -232,21 +232,21 @@ html, body {
 }
 
 .card-meta {
-  font-size: 12px;
+  font-size: 10px;
   color: #4b5563;
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .badge {
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 700;
   color: #fff;
   background: #8a8fa0;
   border-radius: 999px;
-  padding: 2px 8px;
+  padding: 1px 5px;
   margin-left: auto;
 }
 
@@ -476,7 +476,7 @@ html, body {
   .brand-name { display: none; }
   .hint-chip { display: none; }
   .hint-chip.lang-toggle { display: inline-flex; }
-  .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px 12px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 14px 10px; }
   .editor-body { flex-direction: column; }
   #pixelCanvas { width: 100%; height: auto; aspect-ratio: 1 / 1; }
 }
