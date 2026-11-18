@@ -31,7 +31,8 @@
       "rating": null,
       "thumb": "library/art/board_b_14801368_3852_1794569245.png",
       "title": "Custom 30",
-      "type": "board"
+      "type": "board",
+      "hidden": true
     },
     {
       "created_at": 1794034317,
