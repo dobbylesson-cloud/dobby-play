@@ -363,17 +363,6 @@
       "thumb": "library/art/a_8743478_0324.png",
       "title": "死神",
       "type": "animation"
-    },
-    {
-      "created_at": 0,
-      "creator": "Dobby 官方",
-      "file": "library/art/a_740205961_0140.png",
-      "id": "animation_a_740205961_0140",
-      "meta": "13×13 像素",
-      "rating": 96,
-      "thumb": "library/art/a_740205961_0140.png",
-      "title": "水波",
-      "type": "animation"
     }
   ],
   "version": 1
