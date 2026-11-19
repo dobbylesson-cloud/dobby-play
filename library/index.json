@@ -31,7 +31,8 @@
       "rating": null,
       "thumb": "library/art/animation_a_3489066146_4569_1795110101.png",
       "title": "Animation",
-      "type": "animation"
+      "type": "animation",
+      "hidden": true
     },
     {
       "created_at": 1795110092,
