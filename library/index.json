@@ -9,7 +9,8 @@
       "rating": null,
       "thumb": "library/thumbs/remix_g_33475288_0650_1795109574.png",
       "title": "叢林冒險",
-      "type": "remix"
+      "type": "remix",
+      "featured": true
     },
     {
       "created_at": 1795103849,
