@@ -9,7 +9,8 @@
       "rating": null,
       "thumb": "library/thumbs/remix_g_11716115_5579_1794972942.png",
       "title": "My Game",
-      "type": "remix"
+      "type": "remix",
+      "hidden": true
     },
     {
       "created_at": 1794972688,
